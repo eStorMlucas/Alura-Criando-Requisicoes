@@ -1,10 +1,9 @@
-import { conectaAPI } from "./conectaAPI.js";
+import { conectaApi } from "./conectaApi.js";
 
 const lista = document.querySelector('[data-lista]')
 
 async function listaVideos() {
-  const listagem = await conectaAPI.listaVideos()
-  console.log(listagem)
+  const listagem = await conectaApi.listaVideos()
 
   listagem.forEach(video => lista.appendChild(criaCard(video.titulo, video.descricao, video.url, video.imagem)));
 }
@@ -18,7 +17,7 @@ function criaCard(titulo, descricao, url, imagem) {
   `
   <iframe width="100%" height="72%" src="${url}"
                 title="${titulo}" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrySpted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <div class="descricao-video">
                 <img src="${imagem}" alt="logo canal alura">
@@ -26,6 +25,5 @@ function criaCard(titulo, descricao, url, imagem) {
                 <p>${descricao}</p>
             </div>
   `
-
   return card
 }

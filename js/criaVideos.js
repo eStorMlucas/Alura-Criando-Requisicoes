@@ -1,8 +1,8 @@
-import { conectaAPI } from "./conectaAPI.js"; 
+import { conectaApi } from "./conectaApi.js";
 
-const botao = document.querySelector("[data-envio]")
+const formulario = document.querySelector("[data-formulario]")
 
-function recebeDados(evento) {
+async function recebeDados(evento) {
   evento.preventDefault()
 
   const url = document.querySelector("[data-url]").value
@@ -10,9 +10,9 @@ function recebeDados(evento) {
   const imagem = document.querySelector("[data-imagem]").value
   const descricao = Math.floor(Math.random() * 10).toString()
 
-  conectaAPI.cadastraVideos(titulo, descricao, url, imagem)
+  await conectaApi.cadastraVideos(titulo, descricao, url, imagem)
 
   window.location.href = "../pages/envio-concluido.html"
 }
 
-botao.addEventListener("submit", e => (recebeDados(e)) )
+formulario.addEventListener("submit", e => recebeDados(e))
