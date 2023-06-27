@@ -21,12 +21,13 @@ async function cadastraVideos(titulo, descricao, url, imagem) {
 }
 
 async function buscaVideos(busca) {
-  const conexao = await fetch(`http:/localhost:3000/videos?=q${busca}`)
+  const conexao = await fetch(`http://localhost:3000/videos?q=${busca}`)
   
-  return conexao.json()
+  return await conexao.json()
 }
 
-export const conectaApi = {
+export const funcoes = {
   listaVideos,
-  cadastraVideos
+  cadastraVideos,
+  buscaVideos
 }

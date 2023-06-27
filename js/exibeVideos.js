@@ -1,14 +1,13 @@
-import { conectaApi } from "./conectaApi.js";
+import { funcoes } from "./exportaFuncoes.js";
 
 const lista = document.querySelector('[data-lista]')
+const listagemPadrao = await funcoes.listaVideos()
 
-async function listaVideos() {
-  const listagem = await conectaApi.listaVideos()
-
+export default async function exibeVideos(listagem) {
   listagem.forEach(video => lista.appendChild(criaCard(video.titulo, video.descricao, video.url, video.imagem)));
 }
 
-listaVideos()
+exibeVideos(listagemPadrao)
 
 function criaCard(titulo, descricao, url, imagem) {
   const card = document.createElement('li')
